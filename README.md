@@ -6,6 +6,21 @@ there are two main purpose of the project.
 1. create fully built website with nextjs using redux and server-side rendering.
 2. getting familiar with commerce.js 
 
+## Todo
+
+setup redux -- done
+serverside rendering -- done
+next route -- done
+build responsive -- done
+filter by input -- done
+
+filter by category
+add action(redux)
+payment method
+
+
+
+
 ## Installed Dependencies
 
 ```
@@ -13,6 +28,7 @@ there are two main purpose of the project.
     "@chec/commerce.js": "^2.4.1",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@tailwindcss/line-clamp": "^0.2.0",
     "next": "10.1.3",
     "next-redux-wrapper": "^6.0.2",
     "nprogress": "^0.2.0",
