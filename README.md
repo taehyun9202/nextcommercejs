@@ -14,8 +14,8 @@ there are two main purpose of the project.
 3. next route -- done
 4. build responsive -- done
 5. filter by input -- done
+6. filter by category -- done
 
-6. filter by category
 7. add action(redux)
 8. payment method
 
