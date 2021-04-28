@@ -1,5 +1,32 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Purpose
+
+there are two main purpose of the project.
+1. create fully built website with nextjs using redux and server-side rendering.
+2. getting familiar with commerce.js 
+
+## Installed Dependencies
+
+```
+"dependencies": {
+    "@chec/commerce.js": "^2.4.1",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "next": "10.1.3",
+    "next-redux-wrapper": "^6.0.2",
+    "nprogress": "^0.2.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0"
+  },
+  
+  "tailwindcss": "^2.1.2"
+```
+
 ## Getting Started
 
 First, run the development server:
