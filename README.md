@@ -8,15 +8,16 @@ there are two main purpose of the project.
 
 ## Todo
 
-setup redux -- done
-serverside rendering -- done
-next route -- done
-build responsive -- done
-filter by input -- done
 
-filter by category
-add action(redux)
-payment method
+1. setup redux -- done
+2. serverside rendering -- done
+3. next route -- done
+4. build responsive -- done
+5. filter by input -- done
+
+6. filter by category
+7. add action(redux)
+8. payment method
 
 
 
