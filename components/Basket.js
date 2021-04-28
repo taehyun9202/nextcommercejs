@@ -1,7 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { fetchCart } from "../store/actions/cartActions";
+import getCommerce from "../utils/commerce";
 
-function Basket() {
+function Basket(props) {
   const [openBasket, setOpenBasket] = useState(false);
+
+  Basket.propTypes = {
+    cart: PropTypes.object,
+  };
+
+  const commercePublicKey = process.env.COMMERCE_PUBLIC_KEY;
+  console.log(props.cart, commercePublicKey);
+  useEffect(() => {
+    const fetchCart = async () => {
+      const commerce = getCommerce();
+      dispatch({
+        type: actions.CART_RETRIEVE_REQUEST,
+      });
+      const cartData = await commerce.cart.retrieve();
+      dispatch({
+        type: actions.CART_RETRIEVE_SUCCESS,
+        payload: cartData,
+      });
+    };
+
+    fetchCart();
+  });
+
   return (
     <>
       <div
@@ -74,11 +101,19 @@ function Basket() {
       {openBasket && (
         <div
           onClick={() => setOpenBasket(false)}
-          className="fixed inset-0 w-full h-screen z-5"
+          className="fixed inset-0 w-full h-screen z-10"
         ></div>
       )}
     </>
   );
 }
 
-export default Basket;
+const mapStateToProps = (state) => ({
+  cart: state.cart,
+});
+
+const mapDispatchToProps = {
+  fetchCart,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Basket);

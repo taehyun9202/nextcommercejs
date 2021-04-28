@@ -5,41 +5,82 @@ import getCommerce from "../utils/commerce";
 
 export default function Home({ products }) {
   const [searchInput, setSearchInput] = useState("");
-  console.log(products);
-  const filtered = [];
-  if (searchInput) {
-    products.map((product) => {
-      if (product.name.toUpperCase().includes(searchInput.toUpperCase())) {
-        console.log(product);
-        filtered.push(product);
-      }
-    });
-  }
+  const [type, setType] = useState(null);
+
+  const filteredProducts = () => {
+    let filtered = [];
+    if (type === null) {
+      filtered = products;
+    } else {
+      products.map((product) => {
+        if (product.categories.some((c) => c.name === type)) {
+          filtered.push(product);
+        }
+      });
+    }
+    if (searchInput.length > 0) {
+      let result = [];
+      filtered.map((product) => {
+        if (product.name.toUpperCase().includes(searchInput.toUpperCase())) {
+          result.push(product);
+        }
+      });
+      return result;
+    }
+    return filtered;
+  };
 
   return (
-    <div className="flex w-full flex-col justify-center p-10">
+    <div className="flex w-full flex-col justify-center p-10 md:py-20">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="flex flex-col items-center">
-        <p className="mt-4 text-2xl font-bold">CommerceJS Tutorial</p>
-        <p className="mt-4 font-semibold">Categories</p>
+        <p className="hidden md:block mt-4 text-2xl font-bold">
+          CommerceJS Tutorial
+        </p>
+        <p className="mt-4 text-lg font-semibold">Categories</p>
         <div className="flex space-x-2 mt-4">
-          <button className="outline-none hover:outline-none focus:outline-none border border-yellow-200 rounded-lg bg-yellow-50 px-2">
+          <button
+            onClick={() => setType(null)}
+            className={`outline-none hover:outline-none focus:outline-none border border-yellow-200 rounded-lg bg-yellow-50 px-2 ${
+              type === null && `bg-gray-400 border-gray-600`
+            }`}
+          >
             All
           </button>
-          <button className="outline-none hover:outline-none focus:outline-none border border-yellow-200 rounded-lg bg-yellow-50 px-2">
+          <button
+            onClick={() => setType("Home")}
+            className={`outline-none hover:outline-none focus:outline-none border border-yellow-200 rounded-lg bg-yellow-50 px-2 ${
+              type === "Home" && `bg-gray-400 border-gray-600`
+            }`}
+          >
             Home
           </button>
-          <button className="outline-none hover:outline-none focus:outline-none border border-yellow-200 rounded-lg bg-yellow-50 px-2">
+          <button
+            onClick={() => setType("Furniture")}
+            className={`outline-none hover:outline-none focus:outline-none border border-yellow-200 rounded-lg bg-yellow-50 px-2 ${
+              type === "Furniture" && `bg-gray-400 border-gray-600`
+            }`}
+          >
             Furniture
           </button>
-          <button className="outline-none hover:outline-none focus:outline-none border border-yellow-200 rounded-lg bg-yellow-50 px-2">
+          <button
+            onClick={() => setType("Electronics")}
+            className={`outline-none hover:outline-none focus:outline-none border border-yellow-200 rounded-lg bg-yellow-50 px-2 ${
+              type === "Electronics" && `bg-gray-400 border-gray-600`
+            }`}
+          >
             Electronics
           </button>
-          <button className="outline-none hover:outline-none focus:outline-none border border-yellow-200 rounded-lg bg-yellow-50 px-2">
+          <button
+            onClick={() => setType("Appliances")}
+            className={`outline-none hover:outline-none focus:outline-none border border-yellow-200 rounded-lg bg-yellow-50 px-2 ${
+              type === "Appliances" && `bg-gray-400 border-gray-600`
+            }`}
+          >
             Appliances
           </button>
         </div>
@@ -52,9 +93,9 @@ export default function Home({ products }) {
         />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center mt-12 gap-4">
-        {searchInput.length > 0
-          ? filtered.map((product) => <HomeProduct product={product} />)
-          : products.map((product) => <HomeProduct product={product} />)}
+        {filteredProducts().map((product) => (
+          <HomeProduct product={product} />
+        ))}
       </div>
     </div>
   );

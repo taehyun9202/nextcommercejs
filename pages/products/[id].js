@@ -16,14 +16,14 @@ function Product({ product, imgArray, categories, related }) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col space-y-10 sm:space-x-4 sm:space-y-0 sm:flex-row justify-center items-center py-10 px-10 md:px-20 lg:w-[900px] lg:m-auto md:mt-10 lg:mt-10">
+      <div className="flex flex-col space-y-10 sm:space-x-4 sm:space-y-0 sm:flex-row justify-center items-center py-10 px-10 my-10 md:px-20 lg:w-[900px] lg:m-auto md:mt-20 lg:mt-20">
         <div className="flex flex-col w-full sm:1/2">
           <img
             src={images}
             alt={`${product.name}_${imgArray.length - 1}`}
             className="w-full object-contain top-0 left-0 max-h-[300px] min-h-[200px]"
           />
-          <div className="flex mt-4 justify-center items-center h-20 overflow-x-scroll pl-20">
+          <div className="flex mt-4 justify-center items-center h-20 overflow-x-scroll">
             {imgArray.map((img, index) => (
               <img
                 src={img}

@@ -6,6 +6,7 @@ import "nprogress/nprogress.css";
 import Router from "next/router";
 import store from "../store/store";
 import Basket from "../components/Basket";
+import Nav from "../components/Nav";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -14,6 +15,7 @@ Router.events.on("routeChangeError", () => NProgress.done());
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
+      <Nav />
       <Basket />
       <div className="pb-10 md:pb-0">
         <Component {...pageProps} />
